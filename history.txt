@@ -1,0 +1,7 @@
+slow KNN + custom distance metric => 11.73%
+regular KNN + hamming distance (best 25 matching users) => 13.24%
+regular KNN + hamming distance (best 10 matching users) => 11.90%
+regular KNN + 1/(1 + tanimoto) (best 10 matching users) => 13.57%
+regular KNN + 1/ 1 + tanimoto  (best 25 matching users) => 15.75%
+regular KNN + 1/ 1 + tanimoto  (best 50 matching users) => 16.70%
+regular KNN + 1/ 1 + tanimoto  (best 50 matching users) => 16.41%
