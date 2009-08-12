@@ -9,7 +9,7 @@ Wait nearly an hour. . . . . . . (have some bourbon while you wait)
 
 When you're done, a mapping of user_id:similar,user,ids will be in benchmarks/fixtures/github-users-neighbors.txt
 
-  jruby --server benchmark/make_github_recommendations.rb
+  ruby1.9 benchmark/make_github_recommendations.rb
   
 = Licensing
 The decider library is Licensed under the MIT license. You can use the code if you like. For the contest, there are the following additional restrictions:
