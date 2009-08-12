@@ -1,0 +1,17 @@
+= Acts As Bourbon
+This is my entry in the Github contest. The code used to get these results is actually in my decider library. The contest data makes a good benchmark for it ;)
+
+To run the code for yourself:
+  git://github.com/danielsdeleo/Decider.git
+  cd Decider
+  jruby --server -J-Xmx1024m benchmark/slow_knn_bench.rb
+Wait nearly an hour. . . . . . . (have some bourbon while you wait)
+
+When you're done, a mapping of user_id:similar,user,ids will be in benchmarks/fixtures/github-users-neighbors.txt
+
+  jruby --server benchmark/make_github_recommendations.rb
+  
+= Licensing
+The decider library is Licensed under the MIT license. You can use the code if you like. For the contest, there are the following additional restrictions:
+  * If you don't contribute back after the contest is done, you're an asshole.
+  * If you win, you should buy me a drink if we meet at a conference.
