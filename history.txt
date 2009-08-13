@@ -5,3 +5,4 @@ regular KNN + 1/(1 + tanimoto) (best 10 matching users) => 13.57%
 regular KNN + 1/ 1 + tanimoto  (best 25 matching users) => 15.75%
 regular KNN + 1/ 1 + tanimoto  (best 50 matching users) => 16.70%
 regular KNN + 1/ 1 + tanimoto  (best 50 matching users) => 16.41%
+BKTree KNN + jaccard distance  (best 40 matching users) => 10.12%
