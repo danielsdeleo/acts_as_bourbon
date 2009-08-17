@@ -7,3 +7,4 @@ regular KNN + 1/ 1 + tanimoto  (best 50 matching users) => 16.70%
 regular KNN + 1/ 1 + tanimoto  (best 50 matching users) => 16.41%
 BKTree KNN + jaccard distance  (best 40 matching users) => 10.12%
 BKTree KNN + jaccard w/o popularity weighting (best 40) => 19.61%
+BkTree KNN + jaccard + repo votes weighted by user distance + fallback to most popular + K=100 => 21.53%
