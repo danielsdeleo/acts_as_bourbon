@@ -4,14 +4,20 @@ This is my entry in the Github contest. The code used to get these results is ac
 To run the code for yourself:
   git://github.com/danielsdeleo/Decider.git
   cd Decider
-  jruby --server -J-Xmx1024m benchmark/nearest_neighbors_clusters_bench.rb
-Wait nearly an hour. . . . . . . (have some bourbon while you wait)
 
-When you're done, a mapping of user_id:similar,user,ids will be in benchmarks/fixtures/github-users-neighbors.txt
+I'm currently trying two similar lines of investigation, both based on k Nearest Neighbors. The first is to select similar users, and use repos watched by those users as the suggestions. The other is to find similar repos to the ones watched by the user. To generate recommendations based on similar users:
+  jruby --server --fast -J-Xmx1024m benchmark/github_user_clusters.rb
+Wait nearly an hour. . . . . . . (have some bourbon while you wait) . . . and the answers will be printed to STDOUT. This approach seems to max out around ~20%. Try changing the vector types and value of k if you like.
 
-  ruby1.9 benchmark/make_github_recommendations.rb
-  
+Generating suggestions based on similar repos is a two stage process. There are many more repos than users, so it runs much much slower, requiring around 26+ hours of compute time. Thanks to jruby, it takes advantage of multiple cores, so the wall clock time can be much lower if you have several cores. I usually run this on a High CPU XL EC2 instance which has 8 cores and 7GB of ram, though it can run with 2GB of RAM (the actual minimum is unknown).
+  jruby --server --fast -J-Xmx7144m benchmark/github_repo_clusters.rb
+Will generate a text file "repos_neighbors.txt" with the nearest neighbors for each repo along with the distance metric used (Jaccard distance seems to work best). To get the suggestions, run:
+  jruby --server --fast -J-Xmx2048m benchmark/make_github_recommendations.rb
+As of now, this approach seems likely to give drastically better results, but hasn't yet.
+
 = Licensing
+**You Can Use the Code in Your Own Entry**
+
 The decider library is Licensed under the MIT license. You can use the code if you like. For the contest, there are the following additional restrictions:
 * If you don't contribute back after the contest is done, you're an asshole.
 * If you win, you should buy me a drink if we meet at a conference.
